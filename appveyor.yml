@@ -4,16 +4,17 @@ branches:
 os:
   - Visual Studio 2015
 environment:
+  enc_auth:
+    secure: 1yNmBXDpL2nQsGmFyFjhSP2joyOrCnFawpu+xLg8=
   matrix:
-    - TARGET: i686-pc-windows-gnu
-      BITS: 32
-    - TARGET: x86_64-pc-windows-gnu
-      BITS: 64
     - TARGET: i686-pc-windows-msvc
       BITS: 32
     - TARGET: x86_64-pc-windows-msvc
       BITS: 64
 install:
+  # Decrypt Auth Token for tests
+  - nuget install secure-file -ExcludeVersion
+  - secure-file\tools\secure-file -decrypt tests\auth_token.enc -secret %enc_auth% -out tests\auth_token
   # Install Rust
   - curl -sSf -o rustup-init.exe https://win.rustup.rs/
   - rustup-init.exe -y --default-toolchain=nightly-%TARGET%
