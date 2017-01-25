@@ -296,3 +296,170 @@ pub struct Object {
     pub sha: String,
     pub url: String,
 }
+
+// Event API JSON Types
+// Also Used for Webhooks
+#[derive(Debug, PartialEq, Serialize, Deserialize)]
+pub struct CommitCommentEvent {
+
+}
+
+#[derive(Debug, PartialEq, Serialize, Deserialize)]
+pub struct CreateEvent {
+
+}
+
+#[derive(Debug, PartialEq, Serialize, Deserialize)]
+pub struct DeleteEvent {
+
+}
+
+#[derive(Debug, PartialEq, Serialize, Deserialize)]
+pub struct DeploymentEvent {
+
+}
+
+#[derive(Debug, PartialEq, Serialize, Deserialize)]
+pub struct DeploymentStatusEvent {
+
+}
+
+#[derive(Debug, PartialEq, Serialize, Deserialize)]
+pub struct DownloadEvent {
+
+}
+
+#[derive(Debug, PartialEq, Serialize, Deserialize)]
+pub struct FollowEvent {
+
+}
+
+#[derive(Debug, PartialEq, Serialize, Deserialize)]
+pub struct ForkEvent {
+
+}
+
+#[derive(Debug, PartialEq, Serialize, Deserialize)]
+pub struct ForkApplyEvent {
+
+}
+
+#[derive(Debug, PartialEq, Serialize, Deserialize)]
+pub struct GistEvent {
+
+}
+
+#[derive(Debug, PartialEq, Serialize, Deserialize)]
+pub struct GollumEvent {
+
+}
+
+#[derive(Debug, PartialEq, Serialize, Deserialize)]
+pub struct IssueCommentEvent {
+
+}
+
+#[derive(Debug, PartialEq, Serialize, Deserialize)]
+pub struct IssuesEvent {
+
+}
+
+#[derive(Debug, PartialEq, Serialize, Deserialize)]
+pub struct LabelEvent {
+
+}
+
+#[derive(Debug, PartialEq, Serialize, Deserialize)]
+pub struct MemberEvent {
+
+}
+
+#[derive(Debug, PartialEq, Serialize, Deserialize)]
+pub struct MembershipEvent {
+
+}
+
+#[derive(Debug, PartialEq, Serialize, Deserialize)]
+pub struct MilestoneEvent {
+
+}
+
+#[derive(Debug, PartialEq, Serialize, Deserialize)]
+pub struct OrganizationEvent {
+
+}
+
+#[derive(Debug, PartialEq, Serialize, Deserialize)]
+pub struct PageBuildEvent {
+
+}
+
+#[derive(Debug, PartialEq, Serialize, Deserialize)]
+pub struct ProjectCardEvent {
+
+}
+
+#[derive(Debug, PartialEq, Serialize, Deserialize)]
+pub struct ProjectColumnEvent {
+
+}
+
+#[derive(Debug, PartialEq, Serialize, Deserialize)]
+pub struct ProjectEvent {
+
+}
+
+#[derive(Debug, PartialEq, Serialize, Deserialize)]
+pub struct PublicEvent {
+
+}
+
+#[derive(Debug, PartialEq, Serialize, Deserialize)]
+pub struct PullRequestEvent {
+
+}
+
+#[derive(Debug, PartialEq, Serialize, Deserialize)]
+pub struct PullRequestReviewEvent {
+
+}
+
+#[derive(Debug, PartialEq, Serialize, Deserialize)]
+pub struct PullRequestReviewCommentEvent {
+
+}
+
+#[derive(Debug, PartialEq, Serialize, Deserialize)]
+pub struct PushEvent {
+
+}
+
+#[derive(Debug, PartialEq, Serialize, Deserialize)]
+pub struct ReleaseEvent {
+
+}
+
+#[derive(Debug, PartialEq, Serialize, Deserialize)]
+pub struct RepositoryEvent {
+
+}
+
+#[derive(Debug, PartialEq, Serialize, Deserialize)]
+pub struct StatusEvent {
+
+}
+
+#[derive(Debug, PartialEq, Serialize, Deserialize)]
+pub struct TeamEvent {
+
+}
+
+#[derive(Debug, PartialEq, Serialize, Deserialize)]
+pub struct TeamAddEvent {
+
+}
+
+#[derive(Debug, PartialEq, Serialize, Deserialize)]
+pub struct WatchEvent {
+
+}
