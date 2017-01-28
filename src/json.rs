@@ -1,5 +1,6 @@
 //! Structs related to JSON serialization/deserialization
 #![allow(missing_docs)]
+extern crate serde_json;
 
 /// Information related to a user on Github is stored in this struct.
 #[derive(Debug, PartialEq, Serialize, Deserialize)]
@@ -295,4 +296,206 @@ pub struct Object {
     pub type_: String,
     pub sha: String,
     pub url: String,
+}
+
+// Events
+#[derive(Debug, PartialEq, Serialize, Deserialize)]
+pub struct CommitComment {
+    pub action: String,
+    pub comment: Comment,
+    pub repository: Repository,
+    pub sender: Sender,
+}
+
+#[derive(Debug, PartialEq, Serialize, Deserialize)]
+pub struct Comment {
+    pub url: String,
+    pub html_url: String,
+    pub id: u64,
+    pub user: User,
+    pub position: Option<u64>,
+    pub line: Option<u64>,
+    pub path: Option<String>,
+    pub commit_id: Option<String>,
+    pub created_at: String,
+    pub updated_at: String,
+    pub body: String,
+}
+
+#[derive(Debug, PartialEq, Serialize, Deserialize)]
+pub struct Repository {
+    pub id: u64,
+    pub name: String,
+    pub full_name: String,
+    pub owner: Owner,
+    pub private: bool,
+    pub html_url: String,
+    pub description: String,
+    pub fork: bool,
+    pub url: String,
+    pub forks_url: String,
+    pub keys_url: String,
+    pub collaborators_url: String,
+    pub teams_url: String,
+    pub hooks_url: String,
+    pub issue_events_url: String,
+    pub events_url: String,
+    pub assignees_url: String,
+    pub branches_url: String,
+    pub tags_url: String,
+    pub blobs_url: String,
+    pub git_tags_url: String,
+    pub git_refs_url: String,
+    pub trees_url: String,
+    pub statuses_url: String,
+    pub languages_url: String,
+    pub stargazers_url: String,
+    pub contributors_url: String,
+    pub subscribers_url: String,
+    pub subscription_url: String,
+    pub commits_url: String,
+    pub git_commits_url: String,
+    pub comments_url: String,
+    pub issue_comment_url: String,
+    pub contents_url: String,
+    pub compare_url: String,
+    pub merges_url: String,
+    pub archive_url: String,
+    pub downloads_url: String,
+    pub issues_url: String,
+    pub pulls_url: String,
+    pub milestones_url: String,
+    pub notifications_url: String,
+    pub labels_url: String,
+    pub releases_url: String,
+    pub created_at: String,
+    pub updated_at: String,
+    pub pushed_at: String,
+    pub git_url: String,
+    pub ssh_url: String,
+    pub clone_url: String,
+    pub svn_url: String,
+    pub homepage: Option<String>,
+    pub size: u64,
+    pub stargazers_count: u64,
+    pub watchers_count: u64,
+    pub language: Option<String>,
+    pub has_issues: bool,
+    pub has_downloads: bool,
+    pub has_wiki: bool,
+    pub has_pages: bool,
+    pub forks_count: u64,
+    pub mirror_url: Option<String>,
+    pub open_issues_count: u64,
+    pub forks: u64,
+    pub open_issues: u64,
+    pub watchers: u64,
+    pub default_branch: String,
+}
+
+#[derive(Debug, PartialEq, Serialize, Deserialize)]
+pub struct Owner {
+    pub login: String,
+    pub id: u64,
+    pub avatar_url: String,
+    pub gravatar_id: String,
+    pub url: String,
+    pub html_url: String,
+    pub followers_url: String,
+    pub following_url: String,
+    pub gists_url: String,
+    pub starred_url: String,
+    pub subscriptions_url: String,
+    pub organizations_url: String,
+    pub repos_url: String,
+    pub events_url: String,
+    pub received_events_url: String,
+    #[serde(rename="type")]
+    pub type_: String,
+    pub site_admin: bool,
+}
+
+#[derive(Debug, PartialEq, Serialize, Deserialize)]
+pub struct Sender {
+    pub login: String,
+    pub id: u64,
+    pub avatar_url: String,
+    pub gravatar_id: String,
+    pub url: String,
+    pub html_url: String,
+    pub followers_url: String,
+    pub following_url: String,
+    pub gists_url: String,
+    pub starred_url: String,
+    pub subscriptions_url: String,
+    pub organizations_url: String,
+    pub repos_url: String,
+    pub events_url: String,
+    pub received_events_url: String,
+    #[serde(rename="type")]
+    pub type_: String,
+    pub site_admin: bool,
+}
+
+
+#[derive(Debug, PartialEq, Serialize, Deserialize)]
+pub struct IssueComment {
+    pub action: String,
+    pub issue: Issue,
+    pub comment: Option<Comment>,
+    // Unsure what this entails. Docs are skimpy
+    pub changes: Option<serde_json::Value>,
+    #[serde(rename="changes[title][from]")]
+    pub changes_title_from: Option<String>,
+    #[serde(rename="changes[body][from]")]
+    pub changes_body_from: Option<String>,
+    pub assignee: Option<Assignee>,
+    pub label: Option<Label>,
+}
+
+// Fill out more
+#[derive(Debug, PartialEq, Serialize, Deserialize)]
+pub struct Issue {
+    pub url: String,
+    pub labels_url: String,
+    pub comments_url: String,
+    pub events_url: String,
+    pub html_url: String,
+    pub id: u64,
+    pub number: u64,
+    pub title: String,
+    pub user: User,
+    pub repository: Option<Repository>,
+    pub sender: Option<Sender>,
+    pub labels: Vec<Label>,
+    pub state: String,
+    pub locked: bool,
+    pub assignee: Option<Assignee>,
+    pub milestone: Option<String>,
+    pub comments: u64,
+    pub created_at: String,
+    pub updated_at: String,
+    pub closed_at: Option<String>,
+    pub body: String,
+}
+
+// Fill out later
+#[derive(Debug, PartialEq, Serialize, Deserialize)]
+pub struct Assignee {
+    pub dummy: String,
+}
+
+// Fill out later
+#[derive(Debug, PartialEq, Serialize, Deserialize)]
+pub struct Changes {
+    pub dummy: String,
+}
+
+#[derive(Debug, PartialEq, Serialize, Deserialize)]
+pub struct Label {
+    pub id: u64,
+    pub url: String,
+    pub name: String,
+    pub color: String,
+    pub default: bool,
 }
